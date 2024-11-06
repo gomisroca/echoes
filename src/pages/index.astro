@@ -1,8 +1,10 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+const posts = await getCollection('blog');
 ---
 
 <!doctype html>
@@ -10,9 +12,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
-	<body>
+	<body class="bg-neutral-100 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100 font-body">
 		<Header />
-		<main>
+		<main class="font-body p-4">
 			<h1>🧑‍🚀 Hello, Astronaut!</h1>
 			<p>
 				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
@@ -45,6 +47,5 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
 			</p>
 		</main>
-		<Footer />
 	</body>
 </html>

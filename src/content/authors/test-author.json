@@ -1,0 +1,10 @@
+{
+  "name": "Test Author",
+  "blogs": [
+    "first-post",
+    "second-post",
+    "third-post",
+    "using-mdx",
+    "markdown-style-guide"
+  ]
+}
