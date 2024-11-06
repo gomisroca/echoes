@@ -16,14 +16,18 @@ export const POST: APIRoute = async ({ request }) => {
     );
   }
 
-  const { data: postData, error } = await supabase
+  const { error } = await supabase
     .from("Post")
     .insert([{ title: title, author: author, content: content }]);
 
   if (error) {
     console.error("Error inserting data:", error.message);
-  } else {
-    console.log("Content created:", data);
+    return new Response(
+      JSON.stringify({
+        message: "Error inserting data",
+      }),
+      { status: 500 }
+    );
   }
 
   return new Response(
