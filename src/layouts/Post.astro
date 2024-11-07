@@ -1,0 +1,32 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import SanityImage from '@/components/SanityImage.astro';
+
+const { title, description, publishedAt, mainImage, author } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+
+	<body>
+		<Header />
+		<main>
+			<article>
+					{mainImage && <SanityImage src={mainImage} alt={title} width={1020} height={510} />}
+				<div>
+					<div>
+						<div>
+							<FormattedDate date={publishedAt} />
+						</div>
+						<h1>{title}</h1>
+					</div>
+					<slot />
+				</div>
+			</article>
+		</main>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+---
+import type { SanityDocument } from '@sanity/client';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import PostCard from '@/components/PostCard.astro';
+
+const { posts } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title="Vul | Posts" description='Post Archive' />
+	</head>
+
+	<body>
+		<Header />
+    <main class="container mx-auto min-h-screen max-w-3xl p-8">
+      <slot />
+      <ul>
+        {posts.map((post: SanityDocument[]) => (
+          <li>
+            <PostCard post={post} />
+          </li>
+        ))}
+      </ul>
+		</main>
+	</body>
+</html>

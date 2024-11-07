@@ -1,0 +1,9 @@
+---
+import SanityImage from "./SanityImage.astro"
+const { post } = Astro.props
+---
+<a href={`/posts/${post.slug.current}`}>
+  <SanityImage src={post.mainImage} alt={post.title} width={200} height={200} />
+  <h2 class="text-xl font-semibold">{post.title}</h2>
+  <p>{new Date(post.publishedAt).toLocaleDateString()}</p>
+</a>
