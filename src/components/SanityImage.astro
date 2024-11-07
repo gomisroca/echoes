@@ -2,8 +2,8 @@
 import urlFor from "@/sanity/lib/urlForImage";
 import { Image } from "astro:assets";
 
-const { src, alt, width, height } = Astro.props;
+const { src, alt, width, height, className } = Astro.props;
 const image = urlFor(src);
 ---
 
-<Image src={image.width(width).height(height).url()} alt={alt} width={width} height={height} />
+<Image src={image.width(width).height(height).url()} alt={alt} width={width} height={height} class={className} />
