@@ -20,7 +20,10 @@ const posts = await getLatestPosts()
 			<ul class="flex flex-wrap items-center gap-2 w-full">
 				{posts.map((post) => (
 					<li class="w-full">
-						<PostCard post={post} type="one-shots" />
+						<PostCard post={post} type={
+                post.category === "One Shot"
+                  ? `/one-shots/${post.slug.current}`
+                  : `/series/${post.series.slug.current}/${post.slug.current}`} />
 					</li>
 				))}
 			</ul>
