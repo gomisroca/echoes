@@ -1,5 +1,4 @@
 ---
-import SanityImage from "@/components/SanityImage.astro"
 import Layout from "@/layouts/Layout.astro"
 import type { SanityDocument } from "@sanity/client"
 import { getAllSeries } from "@/sanity/queries/series"
@@ -7,6 +6,7 @@ import SeriesCard from "@/components/SeriesCard.astro"
 
 const series = await getAllSeries()
 ---
+
 <Layout>
   <ul class="w-2/3 flex flex-wrap items-center gap-2">
     {series.map((series: SanityDocument) => (
