@@ -6,4 +6,4 @@ const { src, alt, width, height, className } = Astro.props;
 const image = urlFor(src);
 ---
 
-<Image src={image.width(width).height(height).url()} alt={alt} width={width} height={height} class={className} />
+<Image src={image.width(width).height(height).url()} alt={alt} width={width} height={height} class={className} loading="eager" />

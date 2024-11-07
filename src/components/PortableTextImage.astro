@@ -10,5 +10,5 @@ const webpUrl = urlFor(asset).format("webp").url();
 
 <picture>
   <source srcset={webpUrl} type="image/webp" />
-  <Image src={url} alt={alt} width={500} height={500} />
+  <Image src={url} alt={alt} width={500} height={500} class="rounded-xl mx-auto" loading="eager" />
 </picture>
