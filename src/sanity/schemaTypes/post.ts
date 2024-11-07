@@ -36,9 +36,14 @@ export const postType = defineType({
       ],
     }),
     defineField({
-      name: "categories",
-      type: "array",
-      of: [{ type: "reference", to: { type: "category" } }],
+      name: "category",
+      type: "reference",
+      to: { type: "category" },
+    }),
+    defineField({
+      name: "series",
+      type: "reference",
+      to: { type: "series" },
     }),
     defineField({
       name: "tags",
