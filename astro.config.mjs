@@ -12,7 +12,7 @@ import react from "@astrojs/react";
 export default defineConfig({
   output: "server",
   adapter: vercelServerless(),
-  site: "https://example.com",
+  site: "https://echoes-writing.vercel.app",
   integrations: [
     mdx(),
     sitemap(),
