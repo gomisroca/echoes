@@ -36,7 +36,6 @@ const Search = () => {
     }`;
     const data = await sanityClient.fetch<SanityDocument[]>(query);
     setResults(data);
-    console.log(data);
     if (data.length === 0) {
       setFormState((prev) => ({ ...prev, message: "No results found" }));
     } else {
