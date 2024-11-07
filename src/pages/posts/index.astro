@@ -1,9 +1,0 @@
----
-import PostList from "@/layouts/PostList.astro";
-import getPosts from "@/sanity/queries/getPosts";
-
-const posts = await getPosts();
----
-<PostList posts={posts}>
-  <h1 class="text-4xl font-bold mb-8">Posts</h1>
-</PostList>

@@ -1,0 +1,9 @@
+---
+import PostList from "@/layouts/PostList.astro";
+import getPosts from "@/sanity/queries/getPosts";
+
+const posts = await getPosts("One Shot");
+---
+<PostList posts={posts} >
+  <h1 class="text-4xl font-bold mb-8">One Shots</h1>
+</PostList>
