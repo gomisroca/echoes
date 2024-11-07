@@ -4,7 +4,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import PostCard from '@/components/PostCard.astro';
 
-const { posts } = Astro.props;
+const { posts, type } = Astro.props;
 ---
 
 <html lang="en">
@@ -19,7 +19,7 @@ const { posts } = Astro.props;
       <ul>
         {posts.map((post: SanityDocument[]) => (
           <li>
-            <PostCard post={post} />
+            <PostCard post={post} type={type} />
           </li>
         ))}
       </ul>
