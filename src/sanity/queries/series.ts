@@ -36,9 +36,12 @@ export async function getSingleSeries(params: { slug: string }) {
     publishedAt,
     body
   }`;
-
-  const series = await sanityClient.fetch(QUERY, { slug });
-  return series;
+  const SERIES_QUERY = `*[_type == "series" && slug.current == $slug][0]{
+    title,
+  }`;
+  const posts = await sanityClient.fetch(QUERY, { slug });
+  const series = await sanityClient.fetch(SERIES_QUERY, { slug });
+  return { title: series.title, posts };
 }
 
 export async function getStaticSeriesPaths(params: { slug: string }) {
