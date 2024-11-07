@@ -7,7 +7,6 @@ const post = await getSinglePost(Astro.params)
 export async function getStaticPaths(): Promise<{ params: { slug: string } }> {
   return await getStaticPostPaths(Astro.params);
 }
-
 ---
 
 <Post {...post} publishedAt={new Date(post.publishedAt)}>
