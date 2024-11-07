@@ -10,7 +10,7 @@ const subpath = pathname.match(/[^\/]+/g);
 const isActive = href === pathname || href === '/' + subpath?.[0];
 ---
 
-<a href={href} class={"text-orange-300 text-lg uppercase hover:text-orange-400 duration-200 active:text-orange-500 active:scale-x-110 active:duration-100" + (isActive && ' underline underline-offset-4 decoration-4 decoration-cyan-300 hover:decoration-cyan-400')}>
+<a href={href} class={"hover:text-rose-600 active:text-rose-500 text-rose-700 text-lg uppercase  duration-200  active:scale-110 active:duration-100" + (isActive && ' text-rose-600 underline underline-offset-4 decoration-4 decoration-emerald-300 hover:decoration-emerald-400')}>
 	<slot />
 </a>
 
