@@ -1,48 +1,29 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import PostCard from '@/components/PostCard.astro';
+import Layout from '@/layouts/Layout.astro';
+import { getLatestPosts } from '@/sanity/queries/posts';
+const posts = await getLatestPosts()
 ---
-
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body class="bg-neutral-100 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100 font-body">
-		<Header />
-		<main class="font-body p-4">
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
+<Layout>
+	<div class="flex flex-col items-center gap-8 justify-center">
+		<div class="flex flex-col items-center">
+			<h2 class="text-4xl font-bold mb-2">Echoes of Vul</h1>
 			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
+				Welcome to the world of Vul, a realm of magic, adventure, and the extraordinary.
 			</p>
 			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
+				Within these pages, you will find a collection of stories that explore the rich tapestry of this fantastical land.
 			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
+		</div>
+		<div class="flex flex-col items-center w-full">
+			<h1 class="text-xl mb-2">Latest Stories</h1>
+			<ul class="flex flex-wrap items-center gap-2 w-full">
+				{posts.map((post) => (
+					<li class="w-full">
+						<PostCard post={post} type="one-shots" />
+					</li>
+				))}
 			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-	</body>
-</html>
+		</div>
+	</div>
+</Layout>
