@@ -41,6 +41,7 @@ const Search = () => {
     } else {
       setFormState((prev) => ({ ...prev, message: "" }));
     }
+    setSearchTerm("");
     setFormState((prev) => ({ ...prev, isSubmitting: false }));
   };
 
