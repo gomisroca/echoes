@@ -1,18 +1,20 @@
 ---
-import type { SanityDocument } from '@sanity/client';
-import PostCard from '@/components/PostCard.astro';
-import Layout from './Layout.astro';
+import type { SanityDocument } from "@sanity/client";
+import PostCard from "@/components/PostCard.astro";
+import Layout from "./Layout.astro";
 
 const { posts, type } = Astro.props;
 ---
 
 <Layout>
   <slot />
-  <ul class="w-2/3 flex flex-wrap items-center gap-2">
-    {posts.map((post: SanityDocument[]) => (
-      <li class="w-full">
-        <PostCard post={post} type={type} />
-      </li>
-    ))}
+  <ul class="flex w-2/3 flex-wrap items-center gap-2">
+    {
+      posts.map((post: SanityDocument[]) => (
+        <li class="w-full">
+          <PostCard post={post} type={type} />
+        </li>
+      ))
+    }
   </ul>
 </Layout>

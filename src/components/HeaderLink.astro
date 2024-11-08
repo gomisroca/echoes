@@ -1,16 +1,20 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
+import type { HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<'a'>;
+type Props = HTMLAttributes<"a">;
 
 const { href } = Astro.props;
 
 const { pathname } = Astro.url;
 const subpath = pathname.match(/[^\/]+/g);
-const isActive = href === pathname || href === '/' + subpath?.[0];
+const isActive = href === pathname || href === "/" + subpath?.[0];
 ---
 
-<a href={href} class={"hover:text-rose-600 active:text-rose-500 text-rose-700 text-lg uppercase  duration-200  active:scale-110 active:duration-100" + (isActive && ' text-rose-600 underline underline-offset-4 decoration-4 decoration-emerald-300 hover:decoration-emerald-400')}>
-	<slot />
+<a
+  href={href}
+  class={"hover:text-rose-600 active:text-rose-500 text-rose-700 text-lg uppercase  duration-200  active:scale-110 active:duration-100" +
+    (isActive &&
+      " text-rose-600 underline underline-offset-4 decoration-4 decoration-emerald-300 hover:decoration-emerald-400")}
+>
+  <slot />
 </a>
-

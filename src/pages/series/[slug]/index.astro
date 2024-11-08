@@ -3,7 +3,7 @@ import PostList from "@/layouts/PostList.astro";
 import { getStaticPostPaths } from "@/sanity/queries/posts";
 import { getSingleSeries } from "@/sanity/queries/series";
 
-const series = await getSingleSeries(Astro.params)
+const series = await getSingleSeries(Astro.params);
 const params = Astro.params as { slug: string };
 export async function getStaticPaths(): Promise<{ params: { slug: string } }> {
   return await getStaticPostPaths(Astro.params);
@@ -11,5 +11,5 @@ export async function getStaticPaths(): Promise<{ params: { slug: string } }> {
 ---
 
 <PostList posts={series.posts} type=`series/${params.slug}`>
-  <h1 class="text-4xl font-bold mb-8">{series.title}</h1>
+  <h1 class="mb-8 text-4xl font-bold">{series.title}</h1>
 </PostList>

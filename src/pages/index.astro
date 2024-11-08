@@ -1,32 +1,41 @@
 ---
-import PostCard from '@/components/PostCard.astro';
-import Layout from '@/layouts/Layout.astro';
-import { getLatestPosts } from '@/sanity/queries/posts';
-const posts = await getLatestPosts()
+import PostCard from "@/components/PostCard.astro";
+import Layout from "@/layouts/Layout.astro";
+import { getLatestPosts } from "@/sanity/queries/posts";
+const posts = await getLatestPosts();
 ---
+
 <Layout>
-	<div class="flex flex-col items-center gap-8 justify-center">
-		<div class="flex flex-col items-center">
-			<h2 class="text-4xl font-bold mb-2">Echoes of Vul</h1>
-			<p>
-				Welcome to the world of Vul, a realm of magic, adventure, and the extraordinary.
-			</p>
-			<p>
-				Within these pages, you will find a collection of stories that explore the rich tapestry of this fantastical land.
-			</p>
-		</div>
-		<div class="flex flex-col items-center w-full">
-			<h1 class="text-xl mb-2">Latest Stories</h1>
-			<ul class="flex flex-wrap items-center gap-2 w-full">
-				{posts.map((post) => (
-					<li class="w-full">
-						<PostCard post={post} type={
-                post.category === "One Shot"
-                  ? `/one-shots/${post.slug.current}`
-                  : `/series/${post.series.slug.current}/${post.slug.current}`} />
-					</li>
-				))}
-			</ul>
-		</div>
-	</div>
+  <div class="flex flex-col items-center justify-center gap-8">
+    <div class="flex flex-col items-center">
+      <h2 class="mb-2 text-4xl font-bold">Echoes of Vul</h2>
+      <p>
+        Welcome to the world of Vul, a realm of magic, adventure, and the
+        extraordinary.
+      </p>
+      <p>
+        Within these pages, you will find a collection of stories that explore
+        the rich tapestry of this fantastical land.
+      </p>
+    </div>
+    <div class="flex w-full flex-col items-center">
+      <h1 class="mb-2 text-xl">Latest Stories</h1>
+      <ul class="flex w-full flex-wrap items-center gap-2">
+        {
+          posts.map((post) => (
+            <li class="w-full">
+              <PostCard
+                post={post}
+                type={
+                  post.category === "One Shot"
+                    ? `/one-shots/${post.slug.current}`
+                    : `/series/${post.series.slug.current}/${post.slug.current}`
+                }
+              />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
 </Layout>
