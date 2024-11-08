@@ -8,7 +8,7 @@ const { posts, type } = Astro.props;
 
 <Layout>
   <slot />
-  <ul class="flex w-full flex-wrap items-center gap-2 lg:w-2/3">
+  <ul class="flex w-full flex-wrap items-center gap-4 lg:w-2/3">
     {
       posts.map((post: SanityDocument[]) => (
         <li class="w-full">
