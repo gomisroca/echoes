@@ -80,7 +80,7 @@ const Search = () => {
                 className="absolute left-0 top-0 h-full w-full rounded-xl object-cover object-center"
               />
               <div className="z-10 m-4 flex h-full flex-1 flex-col items-start justify-start gap-4 rounded-xl bg-zinc-100/60 p-4 backdrop-blur-sm duration-200 group-hover:bg-zinc-100 dark:bg-zinc-900/60 dark:group-hover:bg-zinc-900">
-                <h2 className="text-2xl font-semibold">{post.title}</h2>
+                <h2>{post.title}</h2>
                 <p>{new Date(post.publishedAt).toLocaleDateString()}</p>
               </div>
             </a>

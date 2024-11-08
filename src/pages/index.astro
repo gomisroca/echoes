@@ -7,19 +7,28 @@ const posts = await getLatestPosts();
 
 <Layout>
   <div class="flex flex-col items-center justify-center gap-8">
-    <div class="flex flex-col items-center">
-      <h2 class="mb-2 text-4xl font-bold">Echoes of Vul</h2>
+    <div class="flex w-2/3 flex-col items-center gap-4">
       <p>
-        Welcome to the world of Vul, a realm of magic, adventure, and the
-        extraordinary.
+        Ut sodales nulla eu ligula iaculis placerat. Morbi eget nunc non metus
+        elementum feugiat in vel mauris. Integer felis urna, posuere finibus
+        cursus ac, ultricies eu tellus. Suspendisse eu turpis varius, luctus
+        mauris ut, pulvinar enim. Ut eleifend sit amet massa et tempus. Quisque
+        sit amet congue eros. Etiam vel velit arcu. Sed malesuada sapien leo, id
+        porttitor neque tempus vitae. Ut id ante nunc.
       </p>
       <p>
-        Within these pages, you will find a collection of stories that explore
-        the rich tapestry of this fantastical land.
+        Nullam pharetra molestie lorem. Duis non sapien interdum quam suscipit
+        placerat. Suspendisse potenti. Curabitur viverra ligula et ante egestas
+        semper. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Pellentesque quis dolor id orci tempus mollis vel a erat. Donec tempor
+        augue sed lacus rutrum, et imperdiet magna blandit. Pellentesque
+        tincidunt sit amet eros at viverra. Morbi in pretium nunc. Cras molestie
+        bibendum orci ac molestie. Proin iaculis urna sit amet vestibulum
+        lobortis. Pellentesque sed malesuada ante.
       </p>
     </div>
     <div class="flex w-full flex-col items-center">
-      <h1 class="mb-2 text-xl">Latest Stories</h1>
+      <h3 class="mb-2">Latest Stories</h3>
       <ul class="flex w-full flex-wrap items-center gap-2">
         {
           posts.map((post) => (
@@ -28,8 +37,8 @@ const posts = await getLatestPosts();
                 post={post}
                 type={
                   post.category === "One Shot"
-                    ? `/one-shots/${post.slug.current}`
-                    : `/series/${post.series.slug.current}/${post.slug.current}`
+                    ? `one-shots/${post.slug.current}`
+                    : `series/${post.series.slug.current}`
                 }
               />
             </li>
