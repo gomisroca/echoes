@@ -11,5 +11,8 @@ export async function getStaticPaths(): Promise<{ params: { slug: string } }> {
 ---
 
 <PostList posts={series.posts} type=`series/${params.slug}`>
-  <h1 class="mb-8">{series.title}</h1>
+  <div class="mb-8 flex flex-col items-center justify-center gap-2">
+    <h1>{series.title}</h1>
+    <p class="w-full md:w-2/3">{series.description}</p>
+  </div>
 </PostList>

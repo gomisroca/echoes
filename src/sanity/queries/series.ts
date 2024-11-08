@@ -38,10 +38,11 @@ export async function getSingleSeries(params: { slug: string }) {
   }`;
   const SERIES_QUERY = `*[_type == "series" && slug.current == $slug][0]{
     title,
+    description,
   }`;
   const posts = await sanityClient.fetch(QUERY, { slug });
   const series = await sanityClient.fetch(SERIES_QUERY, { slug });
-  return { title: series.title, posts };
+  return { title: series.title, description: series.description, posts };
 }
 
 export async function getStaticSeriesPaths(params: { slug: string }) {
