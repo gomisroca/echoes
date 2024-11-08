@@ -4,9 +4,12 @@ import { Icon } from "astro-icon/components";
 
 <button
   id="themeToggle"
-  class="text-xl font-bold text-rose-700 duration-200 hover:text-rose-600 active:scale-110 active:text-rose-500 active:duration-100"
+  class="text-xl font-bold text-rose-700 duration-200 ease-in-out hover:scale-105 hover:text-rose-600 active:scale-110 active:text-rose-500 active:duration-100"
 >
-  <Icon name="mdi:sun-moon-stars" class="h-6 w-6" />
+  <Icon
+    name="mdi:sun-moon-stars"
+    class="h-6 w-6 duration-200 ease-in-out group-hover:scale-105 group-active:scale-110 group-active:duration-100"
+  />
 </button>
 
 <script is:inline>
