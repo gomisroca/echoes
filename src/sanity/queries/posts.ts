@@ -17,6 +17,11 @@ export async function getPosts(category?: string) {
       },
       alt
     },
+    category->{title},
+    series->{
+      slug,
+      title
+    },
     publishedAt,
     body
   }`;
@@ -43,7 +48,8 @@ export async function getLatestPosts() {
     },
     category->{title},
     series->{
-      slug
+      slug,
+      title
     },
     publishedAt,
     body
@@ -65,4 +71,27 @@ export async function getStaticPostPaths(params: { slug: string }) {
     "params": {"slug": slug.current}
   }`;
   return await sanityClient.fetch(QUERY, params);
+}
+
+export async function searchPosts(searchTerm: string) {
+  const QUERY = `*[_type == "post" && title match "${searchTerm}*"] | order(publishedAt desc) [0...10]
+    {
+      title, 
+      slug, 
+      category->{title},
+      series->{
+        slug,
+        title
+      },
+      mainImage{
+        asset->{
+          url
+        },
+        alt
+      },
+      publishedAt,
+    }`;
+
+  const posts = await sanityClient.fetch<SanityDocument[]>(QUERY);
+  return posts;
 }

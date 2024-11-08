@@ -2,6 +2,7 @@ import { type SanityDocument } from "@sanity/client";
 import { useState } from "react";
 import { sanityClient } from "sanity:client";
 import SanityImage from "./SanityImage.astro";
+import { searchPosts } from "@/sanity/queries/posts";
 
 interface FormState {
   isSubmitting: boolean;
@@ -20,21 +21,7 @@ const Search = () => {
 
   const handleSearch = async () => {
     setFormState((prev) => ({ ...prev, isSubmitting: true }));
-    const query = `*[_type == "post" && title match "${searchTerm}*"] | order(publishedAt desc) [0...10]
-    {
-      title, 
-      slug, 
-      series->{slug}, 
-      category->{title},
-      mainImage{
-        asset->{
-          url
-        },
-        alt
-      },
-      publishedAt,
-    }`;
-    const data = await sanityClient.fetch<SanityDocument[]>(query);
+    const data = await searchPosts(searchTerm);
     setResults(data);
     if (data.length === 0) {
       setFormState((prev) => ({ ...prev, message: "No results found" }));
@@ -82,9 +69,18 @@ const Search = () => {
                 height={500}
                 className="absolute left-0 top-0 h-full w-full rounded-xl object-cover object-center"
               />
-              <div className="z-10 m-4 flex h-full flex-1 flex-col items-start justify-start gap-4 rounded-xl bg-zinc-100/60 p-4 backdrop-blur-sm duration-200 group-hover:bg-zinc-100 dark:bg-zinc-900/60 dark:group-hover:bg-zinc-900">
+              <div className="z-10 m-2 flex h-full flex-1 flex-col items-start justify-start gap-2 rounded-xl bg-zinc-100/60 p-4 backdrop-blur-sm duration-200 group-hover:bg-zinc-100 dark:bg-zinc-900/60 dark:group-hover:bg-zinc-900">
                 <h2>{post.title}</h2>
-                <p>{new Date(post.publishedAt).toLocaleDateString()}</p>
+                <div>
+                  {post.category.title === "One Shot" ? (
+                    <p className="font-semibold">One Shot</p>
+                  ) : (
+                    <p className="font-semibold">{post.series.title}</p>
+                  )}
+                  <p className="text-sm">
+                    {new Date(post.publishedAt).toLocaleDateString()}
+                  </p>
+                </div>
               </div>
             </a>
           </div>

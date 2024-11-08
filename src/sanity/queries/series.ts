@@ -33,6 +33,11 @@ export async function getSingleSeries(params: { slug: string }) {
       },
       alt
     },
+    category->{title},
+    series->{
+      slug,
+      title
+    },
     publishedAt,
     body
   }`;
