@@ -41,7 +41,7 @@ export async function getLatestPosts() {
       },
       alt
     },
-    category,
+    category->{title},
     series->{
       slug
     },

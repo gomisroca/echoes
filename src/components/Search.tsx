@@ -25,7 +25,7 @@ const Search = () => {
       title, 
       slug, 
       series->{slug}, 
-      category,
+      category->{title},
       mainImage{
         asset->{
           url
@@ -51,12 +51,12 @@ const Search = () => {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         placeholder="Search..."
-        className="mx-auto w-1/3 rounded-xl bg-zinc-100 p-4 ring-2 ring-emerald-200 dark:bg-zinc-900"
+        className="mx-auto w-full rounded-xl bg-zinc-100 p-4 ring-2 ring-emerald-200 dark:bg-zinc-900 lg:w-1/3"
       />
       <button
         onClick={() => handleSearch()}
         disabled={formState.isSubmitting}
-        className="mx-auto w-1/3 rounded-xl p-4 ring-2 ring-emerald-300 duration-200 hover:scale-105 hover:shadow-lg hover:shadow-emerald-600/20 hover:ring-emerald-400 active:scale-110 active:shadow-emerald-600/40 active:duration-100"
+        className="mx-auto w-full rounded-xl p-4 ring-2 ring-emerald-300 duration-200 hover:scale-105 hover:shadow-lg hover:shadow-emerald-600/20 hover:ring-emerald-400 active:scale-110 active:shadow-emerald-600/40 active:duration-100 lg:w-1/3"
       >
         Search
       </button>
@@ -66,9 +66,11 @@ const Search = () => {
           <div key={post._id}>
             <a
               href={
-                post.category === "One Shot"
+                post.category.title === "One Shot"
                   ? `/one-shots/${post.slug.current}`
-                  : `/series/${post.series.slug.current}/${post.slug.current}`
+                  : post.series
+                    ? `/series/${post.series.slug.current}/${post.slug.current}`
+                    : "/"
               }
               className="group relative mx-auto flex flex-row items-center justify-center rounded-xl ring-2 ring-emerald-300 duration-200 hover:scale-105 hover:shadow-lg hover:shadow-emerald-600/20 hover:ring-emerald-400 active:scale-110 active:shadow-emerald-600/40 active:duration-100"
             >

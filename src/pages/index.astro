@@ -7,7 +7,7 @@ const posts = await getLatestPosts();
 
 <Layout>
   <div class="flex flex-col items-center justify-center gap-8">
-    <div class="flex w-2/3 flex-col items-center gap-4">
+    <div class="flex w-full flex-col items-center gap-2 lg:w-2/3">
       <p>
         Ut sodales nulla eu ligula iaculis placerat. Morbi eget nunc non metus
         elementum feugiat in vel mauris. Integer felis urna, posuere finibus
@@ -36,9 +36,11 @@ const posts = await getLatestPosts();
               <PostCard
                 post={post}
                 type={
-                  post.category === "One Shot"
-                    ? `one-shots/${post.slug.current}`
-                    : `series/${post.series.slug.current}`
+                  post.category.title === "One Shot"
+                    ? `one-shots`
+                    : post.series
+                      ? `series/${post.series.slug.current}`
+                      : "/"
                 }
               />
             </li>
