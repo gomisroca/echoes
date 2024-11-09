@@ -18,36 +18,32 @@ export async function getAllSeries() {
 
 export async function getSingleSeries(params: { slug: string }) {
   const { slug } = params;
-  const QUERY = `*[
-    _type == "post"
-    && references(*[_type == "series" && slug.current == $slug]._id)
-  ]{
+  const QUERY = `
+    *[_type == "series" && slug.current == $slug]{
     title,
-    slug,
-    author->{
-      name
-    },
-    mainImage{
-      asset->{
-        url
-      },
-      alt
-    },
-    category->{title},
-    series->{
+    "posts": *[_type == "post" && _id in ^.posts[]._ref] | order(seriesOrder asc) {
+      title,
       slug,
-      title
-    },
-    publishedAt,
-    body
-  }`;
-  const SERIES_QUERY = `*[_type == "series" && slug.current == $slug][0]{
-    title,
-    description,
-  }`;
-  const posts = await sanityClient.fetch(QUERY, { slug });
-  const series = await sanityClient.fetch(SERIES_QUERY, { slug });
-  return { title: series.title, description: series.description, posts };
+      author->{
+        name
+      },
+      mainImage{
+        asset->{
+          url
+        },
+        alt
+      },
+      category->{title},
+      series->{
+        slug,
+        title
+      },
+      publishedAt,
+      body
+    }
+  }[0]`;
+  const series = await sanityClient.fetch(QUERY, { slug });
+  return series;
 }
 
 export async function getStaticSeriesPaths(params: { slug: string }) {
