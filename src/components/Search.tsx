@@ -39,7 +39,7 @@ const Search = () => {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         placeholder="Search..."
-        className="mx-auto w-full rounded-xl bg-zinc-100 p-4 ring-2 ring-emerald-200 dark:bg-zinc-900 lg:w-1/3"
+        className="mx-auto w-full rounded-xl bg-zinc-100 p-4 ring-2 ring-emerald-200 transition duration-200 ease-in-out focus-visible:scale-105 focus-visible:shadow-lg focus-visible:shadow-emerald-600/20 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-emerald-300/25 lg:w-1/3 dark:bg-zinc-900"
       />
       <button
         onClick={() => handleSearch()}
