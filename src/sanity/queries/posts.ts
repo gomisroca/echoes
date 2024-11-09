@@ -60,9 +60,56 @@ export async function getLatestPosts() {
 }
 
 export async function getSinglePost(params: { slug: string }) {
-  const QUERY = `*[_type == "post" && slug.current == $slug][0]`;
+  const QUERY = `*[_type == "post" && slug.current == $slug][0]{
+  title,
+  slug,
+  author->{
+    name
+  },
+  mainImage{
+    asset->{
+      url
+    },
+    alt
+  },
+  category->{title},
+  publishedAt,
+  body,
+  series->{
+    title,
+    slug,
+    "posts": *[_type == "post" && _id in ^.posts[]._ref] | order(seriesOrder asc) {
+      title,
+      slug
+    }
+  },
+ "relatedPosts": relatedPosts[]->{
+    title,
+    slug,
+    category->{title},
+    series->{
+      slug,
+      title
+    },
+  },
+  "nextPost": *[
+    _type == "post" && 
+    series._ref == ^.series._ref && 
+    seriesOrder > ^.seriesOrder
+  ] | order(seriesOrder asc)[0]{
+    title,
+    slug
+  },
+  "previousPost": *[
+    _type == "post" && 
+    series._ref == ^.series._ref && 
+    seriesOrder < ^.seriesOrder
+  ] | order(seriesOrder desc)[0]{
+    title,
+    slug,
+  }
+}`;
   const post = await sanityClient.fetch<SanityDocument>(QUERY, params);
-
   return post;
 }
 
