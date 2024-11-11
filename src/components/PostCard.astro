@@ -15,7 +15,7 @@ const { post, type } = Astro.props;
     className="absolute left-0 top-0 h-full w-full rounded-xl object-cover object-center"
   />
   <div
-    class="z-10 m-2 flex h-full flex-1 flex-col items-center justify-center gap-2 rounded-xl bg-zinc-100/60 p-4 backdrop-blur-sm duration-200 ease-in-out group-hover:bg-zinc-100/90 dark:bg-zinc-900/60 dark:group-hover:bg-zinc-900/90"
+    class="z-10 m-2 flex h-full flex-1 flex-col items-center justify-center gap-2 rounded-xl bg-zinc-100/60 p-4 leading-relaxed tracking-tight backdrop-blur-sm duration-200 ease-in-out group-hover:bg-zinc-100/90 dark:bg-zinc-900/60 dark:group-hover:bg-zinc-900/90"
   >
     <h2>{post.title}</h2>
     <div class="flex flex-col items-center justify-center gap-1">
@@ -26,7 +26,6 @@ const { post, type } = Astro.props;
           <p class="font-semibold">{post.series.title}</p>
         )
       }
-      <p class="text-sm">{new Date(post.publishedAt).toLocaleDateString()}</p>
     </div>
   </div>
 </a>

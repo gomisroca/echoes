@@ -1,12 +1,10 @@
 ---
-import FormattedDate from "../components/FormattedDate.astro";
 import SanityImage from "@/components/SanityImage.astro";
 import Layout from "./Layout.astro";
 import { Icon } from "astro-icon/components";
 import type { SanityDocument } from "@sanity/client";
 
-const { title, publishedAt, mainImage, previousPost, nextPost, relatedPosts } =
-  Astro.props;
+const { title, mainImage, previousPost, nextPost, relatedPosts } = Astro.props;
 ---
 
 <Layout>
@@ -24,12 +22,11 @@ const { title, publishedAt, mainImage, previousPost, nextPost, relatedPosts } =
         />
       )
     }
-    <div class="flex w-full flex-col gap-2 py-4">
+    <div
+      class="flex w-full flex-col gap-2 py-4 text-justify leading-relaxed tracking-tight lg:w-1/2"
+    >
       <div class="flex flex-col items-center justify-center">
         <h1>{title}</h1>
-        <div>
-          <FormattedDate date={publishedAt} />
-        </div>
       </div>
       <slot />
     </div>
@@ -39,7 +36,7 @@ const { title, publishedAt, mainImage, previousPost, nextPost, relatedPosts } =
           {previousPost && (
             <a
               href={`${previousPost.slug.current}`}
-              class="absolute bottom-0 left-0 top-0 flex w-52 items-center justify-center gap-2 self-end rounded-xl p-4 ring-2 ring-emerald-300 duration-200 ease-in-out hover:scale-105 hover:shadow-lg hover:shadow-emerald-600/20 hover:ring-emerald-400 active:scale-110 active:shadow-emerald-600/40 active:duration-100"
+              class="w-w-[45%] absolute bottom-0 left-0 top-0 flex items-center justify-center gap-2 self-end rounded-xl p-2 ring-2 ring-emerald-300 duration-200 ease-in-out hover:scale-105 hover:shadow-lg hover:shadow-emerald-600/20 hover:ring-emerald-400 active:scale-110 active:shadow-emerald-600/40 active:duration-100 md:w-52 md:p-4"
             >
               <Icon name="mdi:chevron-left" class="h-6 w-6" />
               <div class="line-clamp-2 w-28">
@@ -51,7 +48,7 @@ const { title, publishedAt, mainImage, previousPost, nextPost, relatedPosts } =
           {nextPost && (
             <a
               href={`${nextPost.slug.current}`}
-              class="absolute bottom-0 right-0 top-0 flex w-52 items-center justify-center gap-2 self-end rounded-xl p-4 ring-2 ring-emerald-300 duration-200 ease-in-out hover:scale-105 hover:shadow-lg hover:shadow-emerald-600/20 hover:ring-emerald-400 active:scale-110 active:shadow-emerald-600/40 active:duration-100"
+              class="absolute bottom-0 right-0 top-0 flex w-[45%] items-center justify-center gap-2 self-end rounded-xl p-2 ring-2 ring-emerald-300 duration-200 ease-in-out hover:scale-105 hover:shadow-lg hover:shadow-emerald-600/20 hover:ring-emerald-400 active:scale-110 active:shadow-emerald-600/40 active:duration-100 md:w-52 md:p-4"
             >
               <div class="line-clamp-2 w-28">
                 <p class="text-sm text-zinc-500">Next Chapter</p>
@@ -69,7 +66,7 @@ const { title, publishedAt, mainImage, previousPost, nextPost, relatedPosts } =
               {relatedPosts.map((post: SanityDocument) => (
                 <a
                   href={`/${post.category.title === "One Shot" ? `one-shots/${post.slug.current}` : `series/${post.series.slug.current}/${post.slug.current}`}`}
-                  class="flex w-52 flex-col items-center justify-center gap-2 rounded-xl p-4 ring-2 ring-emerald-300 duration-200 ease-in-out hover:scale-105 hover:shadow-lg hover:shadow-emerald-600/20 hover:ring-emerald-400 active:scale-110 active:shadow-emerald-600/40 active:duration-100"
+                  class="flex w-36 flex-col items-center justify-center gap-2 rounded-xl p-4 ring-2 ring-emerald-300 duration-200 ease-in-out hover:scale-105 hover:shadow-lg hover:shadow-emerald-600/20 hover:ring-emerald-400 active:scale-110 active:shadow-emerald-600/40 active:duration-100 md:w-52"
                 >
                   <div class="flex w-full flex-col gap-1 text-center">
                     <p class="text-sm font-bold">{post.title}</p>
