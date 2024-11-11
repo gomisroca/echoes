@@ -1,0 +1,25 @@
+---
+import { getReference, getStaticRefPaths } from "@/sanity/queries/references";
+import PortableText from "@/components/PortableText.astro";
+import Layout from "@/layouts/Layout.astro";
+
+const ref = await getReference(Astro.params);
+export async function getStaticPaths(): Promise<{ params: { slug: string } }> {
+  return await getStaticRefPaths(Astro.params);
+}
+---
+
+<Layout>
+  <article
+    class="flex w-full flex-col items-center justify-center rounded-xl bg-zinc-100 dark:bg-zinc-900"
+  >
+    <div
+      class="flex w-full flex-col gap-2 py-4 text-justify leading-relaxed tracking-tight lg:w-1/2"
+    >
+      <div class="flex flex-col items-center justify-center">
+        <h1>{ref.title}</h1>
+      </div>
+      <PortableText portableText={ref.body} />
+    </div>
+  </article>
+</Layout>
