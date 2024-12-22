@@ -7,6 +7,7 @@ import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 import sanity from "@sanity/astro";
 import react from "@astrojs/react";
+import node from "@astrojs/node";
 
 // https://astro.build/config
 export default defineConfig({
@@ -26,4 +27,11 @@ export default defineConfig({
     }),
     react(),
   ],
+  // Conditional server-side configuration
+  ...(process.env.NODE_ENV === "docker-production" && {
+    output: "server",
+    adapter: node({
+      mode: "standalone",
+    }),
+  }),
 });

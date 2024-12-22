@@ -1,0 +1,17 @@
+FROM node:lts AS base
+
+# Set working directory
+WORKDIR /app
+
+# Install dependencies
+COPY package*.json ./
+RUN npm install
+
+# Copy project files
+COPY . .
+
+# Expose Astro's default dev port
+EXPOSE 4321
+
+# Development command
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
