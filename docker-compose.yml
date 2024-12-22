@@ -1,0 +1,25 @@
+services:
+  echoes-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "4321:4321"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+
+  echoes-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    ports:
+      - "4321:4321"
+    environment:
+      - NODE_ENV=docker-production
+    restart: always
