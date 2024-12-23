@@ -1,68 +1,138 @@
-# Astro Starter Kit: Blog
+<div align="center" id="readme-top">
+  <a href="https://github.com/gomisroca/echoes">
+    <img src="banner.webp" alt="Logo" width="300" height="100">
+  </a>
 
-```sh
-npm create astro@latest -- --template blog
-```
+<h3 align="center">ECHOES</h3>
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/blog)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/blog/devcontainer.json)
+  <p align="center">
+    A writing site, offering the works of various authors and their series.
+    <br />
+    <a href="https://github.com/gomisroca/echoes"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://echoes-writing.vercel.app">View Demo</a>
+    ·
+    <a href="https://github.com/gomisroca/echoes/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    ·
+    <a href="https://github.com/gomisroca/echoes/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+  </p>
+</div>
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li>
+      <a href="#adjustments">Adjusting the Codebase</a>
+      <ul>
+        <li><a href="#replacing-cms">Replacing Sanity</a></li>
+      </ul>
+    </li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-![blog](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
+<!-- ABOUT THE PROJECT -->
+<h2 id="about-the-project">📡 About The Project</h2>
 
-Features:
+![Screen Shot](screenshot.webp)
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+The project is a web application that showcases writing pieces from different authors, organized in one-shots and series.
 
-## 🚀 Project Structure
+### Built With
 
-Inside of your Astro project, you'll see the following folders and files:
+![Astro](https://img.shields.io/badge/astro-%232C2052.svg?style=for-the-badge&logo=astro&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Sanity Badge](https://img.shields.io/badge/Sanity-F03E2F?logo=sanity&logoColor=fff&style=for-the-badge)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-```text
-├── public/
-├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
-```
+<p align="right">[<a href="#readme-top">back to top</a>]</p>
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+<!-- GETTING STARTED -->
+<h2 id="getting-started">📋 Getting Started</h2>
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Follow these steps to get your own local copy of the project up and running.
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+<h3 id="prerequisites">Prerequisites</h3>
 
-Any static assets, like images, can be placed in the `public/` directory.
+Make sure you have node.js and npm installed on your machine.
 
-## 🧞 Commands
+- npm
+  ```sh
+  npm install npm@latest -g
+  ```
+  Beyond this, if you plan on adjusting the codebase, you might need some knowledge of Astro, React or Sanity depending on the changes you plan on making.
 
-All commands are run from the root of the project, from a terminal:
+<h3 id="installation">Installation</h3>
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+1. Clone the repo
+   ```sh
+   git clone https://github.com/gomisroca/echoes.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Change git remote url to avoid accidental pushes to base project
+   ```sh
+   git remote set-url origin github_username/repo_name
+   git remote -v # confirm the changes
+   ```
 
-## 👀 Want to learn more?
+<p align="right">[<a href="#readme-top">back to top</a>]</p>
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+<!-- USAGE EXAMPLES -->
+<h2 id="usage">💠 Usage</h2>
 
-## Credit
+You can run the project in development mode from the main folder with **npm run dev**.
 
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+<p align="right">[<a href="#readme-top">back to top</a>]</p>
+
+<!-- ADJUSTMENTS -->
+<h2 id="adjustments">🔨 Adjusting the Codebase</h2>
+
+  <h3 id="replacing-cms">📑 Replacing Sanity</h3>
+
+By default, the project uses Sanity as its CMS to provide the content displayed. If you wish to replace it, you will have to remove the sanity related packages, remove Sanity from the Astro config file, and remove the Sanity config file. Furthermore, you will need to replace the logic inside the sanity folder with your own logic, and adjust certain components that make use of SanityImage or SanityDocument.
+
+<p align="right">[<a href="#readme-top">back to top</a>]</p>
+
+<!-- ROADMAP -->
+<h2 id="roadmap">📍 Roadmap</h2>
+
+- [ ] Improve related posts section utilizing tags.
+- [ ] Improve search functionality.
+  - [ ] Support series search.
+
+See the [open issues](https://github.com/gomisroca/echoes/issues) for a full list of proposed features (and known issues).
+
+<p align="right">[<a href="#readme-top">back to top</a>]</p>
+
+<!-- LICENSE -->
+<h2 id="license">🔒 License</h2>
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+<!-- CONTACT -->
+<h2 id="contact">📧 Contact</h2>
+
+Adrià Gomis - [@gomisroca](https://github.com/gomisroca) - gomisroca@gmail.com
+
+<p align="right">[<a href="#readme-top">back to top</a>]</p>
