@@ -1,8 +1,10 @@
+import { type Config } from "tailwindcss";
 import defaultTheme from "tailwindcss/defaultTheme";
 
-/** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: "selector",
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     fontFamily: {
@@ -11,4 +13,4 @@ export default {
     },
   },
   plugins: [],
-};
+} satisfies Config;

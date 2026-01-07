@@ -39,7 +39,7 @@ const Search = () => {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         placeholder="Search..."
-        className="mx-auto w-full rounded-xl bg-zinc-100 p-4 ring-2 ring-emerald-200 transition duration-200 ease-in-out focus-visible:scale-105 focus-visible:shadow-lg focus-visible:shadow-emerald-600/20 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-emerald-300/25 lg:w-1/3 dark:bg-zinc-900"
+        className="mx-auto w-full rounded-xl bg-zinc-100 p-4 ring-2 ring-emerald-200 transition duration-200 ease-in-out focus-visible:scale-105 focus-visible:shadow-lg focus-visible:shadow-emerald-600/20 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-emerald-300/25 lg:w-1/3 dark:bg-zinc-900"
       />
       <button
         onClick={() => handleSearch()}
@@ -69,7 +69,7 @@ const Search = () => {
                 height={500}
                 className="absolute left-0 top-0 h-full w-full rounded-xl object-cover object-center"
               />
-              <div className="z-10 m-2 flex h-full flex-1 flex-col items-start justify-start gap-2 rounded-xl bg-zinc-100/60 p-4 backdrop-blur-sm duration-200 ease-in-out group-hover:bg-zinc-100 dark:bg-zinc-900/60 dark:group-hover:bg-zinc-900">
+              <div className="z-10 m-2 flex h-full flex-1 flex-col items-start justify-start gap-2 rounded-xl bg-zinc-100/60 p-4 backdrop-blur-xs duration-200 ease-in-out group-hover:bg-zinc-100 dark:bg-zinc-900/60 dark:group-hover:bg-zinc-900">
                 <h2>{post.title}</h2>
                 <div>
                   {post.category.title === "One Shot" ? (
