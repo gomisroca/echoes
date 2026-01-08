@@ -36,7 +36,7 @@ const { title, mainImage, previousPost, nextPost, relatedPosts } = Astro.props;
           {previousPost && (
             <a
               href={`${previousPost.slug.current}`}
-              class="w-w-[45%] absolute bottom-0 left-0 top-0 flex items-center justify-center gap-2 self-end rounded-xl p-2 ring-2 ring-emerald-300 duration-200 ease-in-out hover:scale-105 hover:shadow-lg hover:shadow-emerald-600/20 hover:ring-emerald-400 active:scale-110 active:shadow-emerald-600/40 active:duration-100 md:w-52 md:p-4"
+              class="absolute top-0 bottom-0 left-0 flex w-[45%] items-center justify-center gap-2 self-end border-b-2 border-emerald-300 p-2 tracking-tight duration-300 ease-in-out hover:scale-x-105 hover:border-emerald-400 hover:tracking-normal active:scale-120 active:duration-100 md:w-52 md:p-4"
             >
               <Icon name="mdi:chevron-left" class="h-6 w-6" />
               <div class="line-clamp-2 w-28">
@@ -48,7 +48,7 @@ const { title, mainImage, previousPost, nextPost, relatedPosts } = Astro.props;
           {nextPost && (
             <a
               href={`${nextPost.slug.current}`}
-              class="absolute bottom-0 right-0 top-0 flex w-[45%] items-center justify-center gap-2 self-end rounded-xl p-2 ring-2 ring-emerald-300 duration-200 ease-in-out hover:scale-105 hover:shadow-lg hover:shadow-emerald-600/20 hover:ring-emerald-400 active:scale-110 active:shadow-emerald-600/40 active:duration-100 md:w-52 md:p-4"
+              class="absolute top-0 right-0 bottom-0 flex w-[45%] items-center justify-center gap-2 self-end border-b-2 border-emerald-300 p-2 tracking-tight duration-300 ease-in-out hover:scale-x-105 hover:border-emerald-400 hover:tracking-normal active:scale-120 active:duration-100 md:w-52 md:p-4"
             >
               <div class="line-clamp-2 w-28">
                 <p class="text-sm text-zinc-500">Next Chapter</p>
@@ -66,7 +66,7 @@ const { title, mainImage, previousPost, nextPost, relatedPosts } = Astro.props;
               {relatedPosts.map((post: SanityDocument) => (
                 <a
                   href={`/${post.category.title === "One Shot" ? `one-shots/${post.slug.current}` : `series/${post.series.slug.current}/${post.slug.current}`}`}
-                  class="flex w-36 flex-col items-center justify-center gap-2 rounded-xl p-4 ring-2 ring-emerald-300 duration-200 ease-in-out hover:scale-105 hover:shadow-lg hover:shadow-emerald-600/20 hover:ring-emerald-400 active:scale-110 active:shadow-emerald-600/40 active:duration-100 md:w-52"
+                  class="flex w-36 flex-col items-center justify-center gap-2 self-end border-b-2 border-emerald-300 p-2 tracking-tight duration-300 ease-in-out hover:scale-x-105 hover:border-emerald-400 hover:tracking-normal active:scale-120 active:duration-100 md:w-52 md:p-4"
                 >
                   <div class="flex w-full flex-col gap-1 text-center">
                     <p class="text-sm font-bold">{post.title}</p>
