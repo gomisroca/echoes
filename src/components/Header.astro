@@ -1,6 +1,5 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
-import ThemeIcon from "./ThemeIcon.astro";
 import { SITE_TITLE } from "../consts";
 import "@fontsource-variable/josefin-sans";
 import { Icon } from "astro-icon/components";
@@ -8,22 +7,23 @@ import { Image } from "astro:assets";
 ---
 
 <header>
-  <nav class="flex items-start justify-between p-4 font-display">
+  <nav
+    class="font-display fixed top-0 z-10 flex w-full items-start justify-between bg-zinc-100 p-4 dark:bg-zinc-900"
+  >
     <div class="flex w-1/5 justify-start">
       <a
         href="/"
-        class="group hidden flex-row items-center justify-center gap-2 text-rose-700 duration-200 ease-in-out hover:scale-105 hover:text-rose-600 active:scale-110 active:text-rose-500 active:duration-100 md:flex"
+        class="group hidden flex-row items-center justify-center gap-2 text-rose-700 duration-300 ease-in hover:text-rose-600 active:text-rose-500 active:duration-100 md:flex"
       >
-        <div class="flex flex-col items-start justify-start">
-          <h3 class="tracking-widest">
-            {SITE_TITLE}
-          </h3>
-          <p class="text-[0.6rem] uppercase">from Vul</p>
-        </div>
+        <h3
+          class="tracking-tighter duration-300 ease-in-out group-hover:tracking-normal group-active:tracking-widest group-active:duration-100"
+        >
+          {SITE_TITLE}
+        </h3>
       </a>
       <a
         href="/"
-        class="block text-xl text-rose-700 duration-200 ease-in-out hover:scale-105 hover:text-rose-600 active:scale-110 active:text-rose-500 active:duration-100 md:hidden"
+        class="block text-xl text-rose-700 duration-300 ease-in hover:scale-105 hover:text-rose-600 active:scale-120 active:text-rose-500 active:duration-100 md:hidden"
       >
         <p class="sr-only">Home</p>
         <Image
@@ -43,12 +43,12 @@ import { Image } from "astro:assets";
     <div class="flex w-1/5 flex-row justify-end gap-2">
       <a
         href="/search"
-        class="group text-xl text-rose-700 duration-200 ease-in-out hover:scale-105 hover:text-rose-600 active:scale-110 active:text-rose-500 active:duration-100"
+        class="group text-xl text-rose-700 duration-300 ease-in-out hover:scale-105 hover:text-rose-600 active:scale-120 active:text-rose-500 active:duration-100"
       >
         <p class="sr-only">Search</p>
         <Icon
           name="mdi:search"
-          class="h-6 w-6 duration-200 ease-in-out group-hover:scale-105 group-active:scale-110 group-active:duration-100"
+          class="h-6 w-6 duration-300 ease-in-out group-hover:scale-105 group-active:scale-120 group-active:duration-100"
         />
       </a>
     </div>
