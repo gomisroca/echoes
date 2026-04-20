@@ -6,7 +6,7 @@ import { getSingleSeries } from "@/sanity/queries/series";
 const series = await getSingleSeries(Astro.params);
 const params = Astro.params as { slug: string };
 export async function getStaticPaths(): Promise<{ params: { slug: string } }> {
-  return await getStaticPostPaths(Astro.params);
+  return await getStaticPostPaths();
 }
 ---
 

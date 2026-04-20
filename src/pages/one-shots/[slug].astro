@@ -5,7 +5,7 @@ import Post from "@/layouts/Post.astro";
 
 const post = await getSinglePost(Astro.params);
 export async function getStaticPaths(): Promise<{ params: { slug: string } }> {
-  return await getStaticPostPaths(Astro.params);
+  return await getStaticPostPaths();
 }
 ---
 
