@@ -10,7 +10,7 @@ const { posts, type } = Astro.props;
   <slot />
   <ul class="flex w-full flex-wrap items-center gap-4 lg:w-2/3">
     {
-      posts.map((post: SanityDocument[]) => (
+      posts.map((post: SanityDocument) => (
         <li class="w-full">
           <PostCard post={post} type={type} />
         </li>
