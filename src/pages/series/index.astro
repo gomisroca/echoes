@@ -4,6 +4,8 @@ import type { SanityDocument } from "@sanity/client";
 import { getAllSeries } from "@/sanity/queries/series";
 import SeriesCard from "@/components/SeriesCard.astro";
 
+export const prerender = true;
+
 const series = await getAllSeries();
 ---
 

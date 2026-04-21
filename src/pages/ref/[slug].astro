@@ -3,10 +3,13 @@ import { getReference, getStaticRefPaths } from "@/sanity/queries/references";
 import PortableText from "@/components/PortableText.astro";
 import Layout from "@/layouts/Layout.astro";
 
-const ref = await getReference(Astro.params);
-export async function getStaticPaths(): Promise<{ params: { slug: string } }> {
-  return await getStaticRefPaths(Astro.params);
+export const prerender = true;
+
+export async function getStaticPaths() {
+  return await getStaticRefPaths();
 }
+
+const ref = await getReference(Astro.params);
 ---
 
 <Layout>
