@@ -3,7 +3,6 @@ import HeaderLink from "./HeaderLink.astro";
 import { SITE_TITLE } from "../consts";
 import "@fontsource-variable/josefin-sans";
 import { Icon } from "astro-icon/components";
-import { Image } from "astro:assets";
 ---
 
 <header>
@@ -26,7 +25,7 @@ import { Image } from "astro:assets";
         class="block text-xl text-rose-700 duration-300 ease-in hover:scale-105 hover:text-rose-600 active:scale-120 active:text-rose-500 active:duration-100 md:hidden"
       >
         <p class="sr-only">Home</p>
-        <Image
+        <img
           src="/favicon.svg"
           alt="Echoes"
           width={40}
