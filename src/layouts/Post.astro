@@ -4,6 +4,18 @@ import Layout from "./Layout.astro";
 import { Icon } from "astro-icon/components";
 import type { SanityDocument } from "@sanity/client";
 
+interface Props {
+  title: string;
+  publishedAt: Date;
+  mainImage?: {
+    asset: { url: string };
+    alt?: string;
+  };
+  previousPost?: { title: string; slug: { current: string } };
+  nextPost?: { title: string; slug: { current: string } };
+  relatedPosts?: SanityDocument[];
+}
+
 const { title, mainImage, previousPost, nextPost, relatedPosts } = Astro.props;
 ---
 

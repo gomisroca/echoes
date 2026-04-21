@@ -113,11 +113,11 @@ export async function getSinglePost(params: { slug: string }) {
   return post;
 }
 
-export async function getStaticPostPaths(params: { slug: string }) {
+export async function getStaticPostPaths() {
   const QUERY = `*[_type == "post" && defined(slug.current)]{
     "params": {"slug": slug.current}
   }`;
-  return await sanityClient.fetch(QUERY, params);
+  return await sanityClient.fetch(QUERY);
 }
 
 export async function searchPosts(searchTerm: string) {

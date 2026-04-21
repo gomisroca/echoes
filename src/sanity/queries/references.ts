@@ -11,9 +11,9 @@ export async function getReference(params: { slug: string }) {
   return ref;
 }
 
-export async function getStaticRefPaths(params: { slug: string }) {
+export async function getStaticRefPaths() {
   const QUERY = `*[_type == "ref" && defined(slug.current)]{
     "params": {"slug": slug.current}
   }`;
-  return await sanityClient.fetch(QUERY, params);
+  return await sanityClient.fetch(QUERY);
 }

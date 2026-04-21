@@ -2,11 +2,25 @@
 import { getSinglePost, getStaticPostPaths } from "@/sanity/queries/posts";
 import PortableText from "@/components/PortableText.astro";
 import Post from "@/layouts/Post.astro";
+import type { SanityDocument } from "@sanity/client";
 
-const post = await getSinglePost(Astro.params);
-export async function getStaticPaths(): Promise<{ params: { slug: string } }> {
-  return await getStaticPostPaths(Astro.params);
+export const prerender = true;
+
+export async function getStaticPaths() {
+  return await getStaticPostPaths();
 }
+
+interface PostDocument extends SanityDocument {
+  title: string;
+  publishedAt: string;
+  mainImage?: { asset: { url: string }; alt?: string };
+  previousPost?: { title: string; slug: { current: string } };
+  nextPost?: { title: string; slug: { current: string } };
+  relatedPosts?: SanityDocument[];
+  body: unknown;
+}
+
+const post = (await getSinglePost(Astro.params)) as PostDocument;
 ---
 
 <Post {...post} publishedAt={new Date(post.publishedAt)}>

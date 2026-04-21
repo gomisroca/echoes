@@ -46,9 +46,9 @@ export async function getSingleSeries(params: { slug: string }) {
   return series;
 }
 
-export async function getStaticSeriesPaths(params: { slug: string }) {
+export async function getStaticSeriesPaths() {
   const QUERY = `*[_type == "series" && defined(slug.current)]{
     "params": {"slug": slug.current}
   }`;
-  return await sanityClient.fetch(QUERY, params);
+  return await sanityClient.fetch(QUERY);
 }

@@ -1,6 +1,5 @@
-// @ts-check
 import { defineConfig } from "astro/config";
-import vercelServerless from "@astrojs/vercel";
+import vercel from "@astrojs/vercel";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
@@ -9,12 +8,13 @@ import react from "@astrojs/react";
 import node from "@astrojs/node";
 import tailwindcss from "@tailwindcss/vite";
 
-// https://astro.build/config
 export default defineConfig({
   output: "server",
-  adapter: vercelServerless(),
+  adapter:
+    process.env.NODE_ENV === "docker-production"
+      ? node({ mode: "standalone" })
+      : vercel(),
   site: "https://echoes-writing.vercel.app",
-
   integrations: [
     mdx(),
     sitemap(),
@@ -22,20 +22,11 @@ export default defineConfig({
     sanity({
       projectId: "z0aukxbh",
       dataset: "production",
-      useCdn: false, // for static builds
+      useCdn: false,
       studioBasePath: "/studio",
     }),
     react(),
   ],
-
-  // Conditional server-side configuration
-  ...(process.env.NODE_ENV === "docker-production" && {
-    output: "server",
-    adapter: node({
-      mode: "standalone",
-    }),
-  }),
-
   vite: {
     plugins: [tailwindcss()],
   },

@@ -1,16 +1,19 @@
 import rss from "@astrojs/rss";
-import { getCollection } from "astro:content";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { getPosts } from "../sanity/queries/posts";
 
 export async function GET(context) {
-  const posts = await getCollection("blog");
+  const posts = await getPosts();
   return rss({
-    title: SITE_TITLE,
-    description: SITE_DESCRIPTION,
+    title: "Echoes",
+    description: "A writing site offering works from various authors.",
     site: context.site,
     items: posts.map((post) => ({
-      ...post.data,
-      link: `/blog/${post.slug}/`,
+      title: post.title,
+      pubDate: post.publishedAt,
+      link:
+        post.category?.title === "One Shot"
+          ? `/one-shots/${post.slug.current}/`
+          : `/series/${post.series?.slug?.current}/${post.slug.current}/`,
     })),
   });
 }

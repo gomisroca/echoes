@@ -44,7 +44,7 @@ export const postType = defineType({
       name: "relatedPosts",
       type: "array",
       of: [{ type: "reference", to: { type: "post" } }],
-      hidden: ({ parent, value }) => {
+      hidden: ({ parent }) => {
         return (
           parent?.category?._ref !== "605aeca9-bd29-4f35-a7eb-98ed764e93de"
         );
@@ -54,7 +54,7 @@ export const postType = defineType({
       name: "series",
       type: "reference",
       to: { type: "series" },
-      hidden: ({ parent, value }) => {
+      hidden: ({ parent }) => {
         return (
           parent?.category?._ref === "605aeca9-bd29-4f35-a7eb-98ed764e93de"
         );
